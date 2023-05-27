@@ -69,10 +69,15 @@ const createRoutes = () => {
     });
 
     router.delete('/:id', auth, async (req, res) => {
+
         try {
             const photo = await Photo.findById(req.params.id);
 
             if (!photo) return res.sendStatus(404);
+
+            if (JSON.stringify(photo.user) !== JSON.stringify(req.user._id)) {
+                return res.sendStatus(401);
+            }
 
             await photo.deleteOne();
 
