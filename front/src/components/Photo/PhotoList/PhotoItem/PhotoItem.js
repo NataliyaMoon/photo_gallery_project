@@ -1,5 +1,7 @@
-import { Card, CardActions, CardContent, CardHeader, Grid, CardMedia } from "@mui/material";
+import { Card, CardActions, CardContent, CardHeader, Grid, CardMedia, IconButton, } from "@mui/material";
 import { Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { uploadUrl } from "../../../../constants/config";
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from "react-redux";
@@ -29,7 +31,7 @@ const PhotoItem = ({ id, title, image, user }) => {
 
     return (
         <Grid item xs={12} sm={12} md={6} lg={4}>
-            <Card>
+            <Card  style={{ margin: '10px' }}>
                 <CardHeader title={title} />
                 <CardContent>
                     <CardMedia onClick={openPopup}
@@ -37,9 +39,12 @@ const PhotoItem = ({ id, title, image, user }) => {
                         title={title}
                         sx={{ maxWidth: 400, height: 400 }}
                     />
-                    <strong style={{ marginLeft: '10px' }}>
-                        By: {user.username}
+                    <strong style={{ fontSize: "20px" }}>
+                        By:
                     </strong>
+                    <IconButton component={Link} to={`/users/${user._id}`}>
+                        {user.username}
+                    </IconButton>
                 </CardContent>
                 <CardActions>
                     {
@@ -52,7 +57,7 @@ const PhotoItem = ({ id, title, image, user }) => {
                 {isPopupOpen && (
                     <Popup
                         image={imagePath}
-                        onClose={ closePopup}
+                        onClose={closePopup}
                     />
                 )}
 

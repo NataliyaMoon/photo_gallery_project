@@ -5,6 +5,7 @@ import Register from "./containers/Auth/Register/Register";
 import Login from "./containers/Auth/Login/Login";
 import AddPhoto from './containers/AddPhoto/AddPhoto';
 import Photos from './containers/Photos/Photos';
+import UsersGallery from "./components/UsersGallery/UsersGallery";
 
 const ProtectedRoute = ({ isAllowed, redirectPath, children }) => {
     if (!isAllowed) {
@@ -28,7 +29,7 @@ const Routes = ({ user }) => {
             <Route path={REGISTER} element={<Register />} />
             <Route path={LOGIN} element={<Login />} />
             <Route path={MAIN} element={<Photos />} />
-            {/* <Route path={USERS_GALLERY} element={<UsersGallery />} /> */}
+            <Route path={USERS_GALLERY} element={<UsersGallery />} />
             <Route path={PHOTO_ADD} element={addPhoto} />
         </Route>
     </RoutesSwitch>

@@ -6,6 +6,12 @@ export const fetchPhotos = createAsyncThunk(
     async () => await axios.get('/photos').then(res => res.data)
 );
 
+export const fetchSomeUserPhotos = createAsyncThunk(
+    'photos/fetch',
+    async (id) => await axios.get(`/photos?user=${id}`).then(res => res.data)
+);
+
+
 export const createPhoto = createAsyncThunk(
     'photos/create',
     async ({data, callback}) => await axios
