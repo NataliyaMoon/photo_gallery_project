@@ -1,10 +1,14 @@
 import {useState} from "react";
+import { useSelector } from "react-redux";
 import {Button, Grid} from "@mui/material";
 import FileInput from "../../UI/Form/FileInput/FileInput";
 import FormElement from "../../UI/Form/FormElement/FormElement";
 
 const PhotoForm = ({createPhotoHandler, photos}) => {
+    const User = useSelector(({ usersState }) => usersState.user);
+
     const [state, setState] = useState({
+        user: User._id,
         title: "",
         image: ""
     });
