@@ -58,7 +58,7 @@ const Login = () => {
                         <LockOutlinedIcon />
                     </Avatar>
                     <Typography component="h1" variant="h5">
-                        Sign In
+                        Login
                     </Typography>
                     {error && <Alert severity="error">{error.error}</Alert>}
                     <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
@@ -85,12 +85,12 @@ const Login = () => {
                             variant="contained"
                             sx={{ mt: 3, mb: 2 }}
                         >
-                            Sign In
+                            Login
                         </Button>
                         <Grid container justifyContent="flex-end">
                             <Grid item>
                                 <Link href="#" variant="body2" component={RouterLink} to={REGISTER}>
-                                    Sign Up
+                                    Register
                                 </Link>
                             </Grid>
                         </Grid>

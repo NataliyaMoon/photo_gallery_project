@@ -6,10 +6,21 @@ import { uploadUrl } from "../../../../constants/config";
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from "react-redux";
 import { deletePhoto } from "../../../../store/actions/photosActions";
+import { useState } from "react";
+import Popup from "../../../Popup/Popup";
 
-const PhotoItem = ({ id, title, image , user}) => {
+const PhotoItem = ({ id, title, image, user }) => {
     const logginUser = useSelector(({ usersState }) => usersState.user);
     const dispatch = useDispatch();
+    const [isPopupOpen, setPopupOpen] = useState(false);
+
+    const openPopup = () => {
+        setPopupOpen(true);
+    };
+
+    const closePopup = () => {
+        setPopupOpen(false);
+    };
 
     const imagePath = uploadUrl + '/' + image;
 
@@ -22,20 +33,30 @@ const PhotoItem = ({ id, title, image , user}) => {
             <Card>
                 <CardHeader title={title} />
                 <CardContent>
-                    <CardMedia
+                    <CardMedia onClick={openPopup}
                         image={imagePath}
                         title={title}
                         sx={{ maxWidth: 400, height: 400 }}
                     />
+                    <strong style={{ marginLeft: '10px' }}>
+                        By: {user.username}
+                    </strong>
                 </CardContent>
                 <CardActions>
-                    {/* {
-                        logginUser._id === user
+                    {
+                        logginUser?._id === user._id
                             ?
                             <Button variant="danger" onClick={onRemove}>Remove</Button>
                             : null
-                    } */}
+                    }
                 </CardActions>
+                {isPopupOpen && (
+                    <Popup
+                        image={imagePath}
+                        onClose={ closePopup}
+                    />
+                )}
+
             </Card>
         </Grid>
     );

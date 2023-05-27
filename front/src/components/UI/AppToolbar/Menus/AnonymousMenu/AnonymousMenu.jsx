@@ -4,8 +4,8 @@ import {Button} from '@mui/material';
 
 const AnonymousMenu = () => {
     return <>
-        <Button color="inherit" component={NavLink} to={REGISTER}>Sign up</Button>
-        <Button color="inherit" component={NavLink} to={LOGIN}>Sign In</Button>
+        <Button color="inherit" component={NavLink} to={REGISTER}>Register</Button>
+        <Button color="inherit" component={NavLink} to={LOGIN}>Login</Button>
     </>;
 };
 
