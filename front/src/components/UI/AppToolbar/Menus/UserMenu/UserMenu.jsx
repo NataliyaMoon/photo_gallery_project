@@ -1,10 +1,9 @@
 import { useState } from "react";
-import { Button, Grid, Menu, MenuItem } from '@mui/material';
+import { Button, Menu, MenuItem } from '@mui/material';
 import { useDispatch } from "react-redux";
 import { useNavigate, NavLink, Link } from "react-router-dom";
 import { logoutUser } from "../../../../../store/actions/usersActions";
-import { ALBUM_ADD, MAIN, TRACK_ADD, TRACK_HISTORY } from "../../../../../constants/routes";
-import { ARTIST_ADD } from "../../../../../constants/routes";
+import { MAIN, PHOTO_ADD } from "../../../../../constants/routes";
 
 const UserMenu = ({ user }) => {
     const navigate = useNavigate();
@@ -21,28 +20,7 @@ const UserMenu = ({ user }) => {
 
     return <>
         <Button color="inherit" component={NavLink} to={MAIN}>Home</Button>
-        {
-            user && <Grid item>
-                <Button color="inherit" component={Link} to={ARTIST_ADD}>
-                    Add artist
-                </Button>
-            </Grid>
-        }
-        {
-            user && <Grid item>
-                <Button color="inherit" component={Link} to={ALBUM_ADD}>
-                    Add album
-                </Button>
-            </Grid>
-        }
-        {
-            user && <Grid item>
-                <Button color="inherit" component={Link} to={TRACK_ADD}>
-                    Add track
-                </Button>
-            </Grid>
-        }
-        <Button color="inherit" component={NavLink} to={TRACK_HISTORY}>My track history</Button>
+        <Button color="inherit" component={NavLink} to={PHOTO_ADD}>Add new photo</Button>
         <Button
             aria-controls="simple-menu"
             aria-haspopup={true}
@@ -57,8 +35,6 @@ const UserMenu = ({ user }) => {
             onClose={handleClose}
             keepMounted
         >
-            <MenuItem>Profile</MenuItem>
-            <MenuItem>My account</MenuItem>
             <MenuItem
                 onClick={() => dispatch(logoutUser({ callback: () => navigate(MAIN) }))}
             >
