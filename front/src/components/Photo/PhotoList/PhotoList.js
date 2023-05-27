@@ -1,6 +1,5 @@
 import PhotoItem from "./PhotoItem/PhotoItem";
 import { Grid } from "@mui/material";
-import { useState } from "react";
 
 const PhotoList = ({ photos }) => {
     return <Grid

@@ -6,7 +6,7 @@ import FormElement from "../../UI/Form/FormElement/FormElement";
 
 const PhotoForm = ({createPhotoHandler, photos}) => {
     const User = useSelector(({ usersState }) => usersState.user);
-
+    
     const [state, setState] = useState({
         user: User._id,
         title: "",

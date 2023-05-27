@@ -5,7 +5,7 @@ import Register from "./containers/Auth/Register/Register";
 import Login from "./containers/Auth/Login/Login";
 import AddPhoto from './containers/AddPhoto/AddPhoto';
 import Photos from './containers/Photos/Photos';
-import UsersGallery from "./components/UsersGallery/UsersGallery";
+import UsersGallery from "./containers/UsersGallery/UsersGallery";
 
 const ProtectedRoute = ({ isAllowed, redirectPath, children }) => {
     if (!isAllowed) {
