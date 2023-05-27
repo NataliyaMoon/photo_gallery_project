@@ -1,7 +1,6 @@
 import { Card, CardActions, CardContent, CardHeader, Grid, CardMedia, IconButton, } from "@mui/material";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { uploadUrl } from "../../../../constants/config";
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from "react-redux";

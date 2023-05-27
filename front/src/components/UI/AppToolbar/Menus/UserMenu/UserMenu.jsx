@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { Button, Menu, MenuItem } from '@mui/material';
 import { useDispatch } from "react-redux";
-import { useNavigate, NavLink} from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import { logoutUser } from "../../../../../store/actions/usersActions";
-import { MAIN, PHOTO_ADD } from "../../../../../constants/routes";
+import { MAIN } from "../../../../../constants/routes";
+import { Link } from "react-router-dom";
 
 const UserMenu = ({ user }) => {
     const navigate = useNavigate();
@@ -27,6 +28,12 @@ const UserMenu = ({ user }) => {
             color="inherit"
         >
             Hello, {user.username}
+        </Button>
+        <Button
+            color="inherit"
+            component={Link} to={`/users/${user._id}`}
+        >
+            Мои фото
         </Button>
         <Menu
             open={!!anchorEl}

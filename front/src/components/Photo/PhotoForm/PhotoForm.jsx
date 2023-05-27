@@ -1,17 +1,25 @@
-import {useState} from "react";
+import { useState } from "react";
 import { useSelector } from "react-redux";
-import {Button, Grid} from "@mui/material";
+import { Button, Grid } from "@mui/material";
 import FileInput from "../../UI/Form/FileInput/FileInput";
 import FormElement from "../../UI/Form/FormElement/FormElement";
+import { useEffect } from "react";
 
-const PhotoForm = ({createPhotoHandler, photos}) => {
+const PhotoForm = ({ createPhotoHandler }) => {
     const User = useSelector(({ usersState }) => usersState.user);
-    
+
     const [state, setState] = useState({
         user: User._id,
         title: "",
         image: ""
     });
+
+    const [formValid, setFormValid] = useState(false);
+
+    useEffect(() => {
+        const isFormValid = state.title.trim() !== '' && state.image !== "";
+        setFormValid(isFormValid);
+    }, [state.title, state.image]);
 
     const submitFormHandler = e => {
         e.preventDefault();
@@ -30,7 +38,7 @@ const PhotoForm = ({createPhotoHandler, photos}) => {
         const value = e.target.value;
 
         setState(prevState => {
-            return {...prevState, [name]: value};
+            return { ...prevState, [name]: value };
         });
     };
 
@@ -39,7 +47,7 @@ const PhotoForm = ({createPhotoHandler, photos}) => {
         const name = e.currentTarget.name;
 
         setState(prevState => {
-            return {...prevState, [name]: file};
+            return { ...prevState, [name]: file };
         });
     };
 
@@ -62,7 +70,14 @@ const PhotoForm = ({createPhotoHandler, photos}) => {
                     label="Image"
                 />
                 <Grid item xs>
-                    <Button type="submit" color="primary" variant="contained">Create photo</Button>
+                    <Button
+                        type="submit"
+                        color="primary"
+                        variant="contained"
+                        disabled={!formValid}
+                    >
+                        Create photo
+                    </Button>
                 </Grid>
             </Grid>
         </form>
