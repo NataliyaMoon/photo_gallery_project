@@ -28,6 +28,8 @@ const photosSlice = createSlice({
                 deletePhoto.fulfilled,
                 (state, action) => {
                     state.loading = false;
+                    let id = state.photos.findIndex(item => item._id === action.payload)
+                    state.photos.splice(id, 1)
                 }
             )
             .addCase(

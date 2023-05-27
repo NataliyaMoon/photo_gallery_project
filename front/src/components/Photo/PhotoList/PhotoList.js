@@ -3,12 +3,6 @@ import { Grid } from "@mui/material";
 import { useState } from "react";
 
 const PhotoList = ({ photos }) => {
-    const [isPopupOpen, setPopupOpen] = useState(false);
-
-    const goToPhoto = (id) => {
-        setPopupOpen(true);
-    };
-
     return <Grid
         container
         item
@@ -24,7 +18,6 @@ const PhotoList = ({ photos }) => {
                     title={photo.title}
                     image={photo.image}
                     user={photo.user}
-                    onClick={() => { goToPhoto(photo._id) }}
                 />
             ))
         }

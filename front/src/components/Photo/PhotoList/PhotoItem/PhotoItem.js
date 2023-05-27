@@ -1,11 +1,9 @@
-import { Card, CardActions, CardContent, CardHeader, Grid, IconButton, CardMedia } from "@mui/material";
+import { Card, CardActions, CardContent, CardHeader, Grid, CardMedia } from "@mui/material";
 import { Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { uploadUrl } from "../../../../constants/config";
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from "react-redux";
-import { deletePhoto } from "../../../../store/actions/photosActions";
+import { deletePhoto, fetchPhotos } from "../../../../store/actions/photosActions";
 import { useState } from "react";
 import Popup from "../../../Popup/Popup";
 
@@ -26,6 +24,7 @@ const PhotoItem = ({ id, title, image, user }) => {
 
     const onRemove = async () => {
         await dispatch(deletePhoto(id));
+        fetchPhotos();
     };
 
     return (
@@ -46,7 +45,7 @@ const PhotoItem = ({ id, title, image, user }) => {
                     {
                         logginUser?._id === user._id
                             ?
-                            <Button variant="danger" onClick={onRemove}>Remove</Button>
+                            <Button onClick={onRemove}>Remove</Button>
                             : null
                     }
                 </CardActions>
